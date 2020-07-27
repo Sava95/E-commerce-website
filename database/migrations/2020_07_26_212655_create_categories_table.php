@@ -30,7 +30,6 @@ class CreateCategoriesTable extends Migration
             $c->name = $category;
             $c->save();
         }
-
     }
 
     /**

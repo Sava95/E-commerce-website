@@ -3,13 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Announcement;
 
 class Category extends Model
 {
-    protected $guarded = [];
-
-    public function announcements()
+    public function announcement()
     {
-        return $this->hasMany('App\Announcement');
+        return $this->hasMany(Announcement::class);
     }
 }

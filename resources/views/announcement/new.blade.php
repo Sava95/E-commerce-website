@@ -11,6 +11,25 @@
                 <div class="card-body">
                     <form method="POST" action="{{route('announcement.create')}}">
                         @csrf
+
+                        <div class="form-group row">
+                            <label for='category' class='col-md-4 col-form-label text-md-right'> Categoria </label>
+                            <div class="col-md-6">
+                                <select class='form-control' name='category' id="category">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}" 
+                                                {{old('category') == $category->id ? 'selected' : ''}}>
+                                        {{$category->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                
+                                @error('category')
+                                    <span class="invalid-feedback" role='alert'> <strong>{{$message}}</strong> </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for='title' class='col-md-4 col-form-label text-md-right'> Titulo </label>
                             <div class="col-md-6">

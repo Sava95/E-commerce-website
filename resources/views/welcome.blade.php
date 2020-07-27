@@ -36,9 +36,32 @@
                             </text>
                         </div>
                 </div>
-                @endsection
 
+                @foreach ($announcements as $announcement)
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    {{$announcement->title}}
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        <img src='https://via.placeholder.com/300' class='rounded float-right' alt="">
+                                        {{$announcement->body}}
+                                    </p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <strong>Category: <a href="#"> {{$announcement->category->name}} </a></strong>
+                                    <i> {{$announcement->created_at->format('d/m/Y')}} - {{$announcement->user->name}} </i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+                @endsection
             </div>
+
         @else 
             <div class="flex-center position-ref full-height">
                 @if (Route::has('login'))
