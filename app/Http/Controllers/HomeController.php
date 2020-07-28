@@ -21,7 +21,6 @@ class HomeController extends Controller
         $this->middleware('auth');
         $categories = Category::all();
         View::share('categories', $categories);
-
     }
 
     /**
@@ -31,14 +30,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', compact('categories'));
     }
 
     # My Controls
 
     public function newAnnouncement() 
     {
-        return view('announcement.new'); 
+        return view('announcement\new'); 
     }
     
     public function createAnnouncement(AnnouncementRequest $request)
@@ -54,5 +53,13 @@ class HomeController extends Controller
         return redirect('/')->with(['announcement.create.success' => 'ok']);
        
     }
+
+    public function oneAnnouncement($name,$id)
+    {
+        $announcement = Announcement::find($id);
+       
+        return view('announcement\details', compact('announcement'));
+    }
+   
 
 }

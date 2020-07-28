@@ -1,100 +1,21 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
+@section('content')
 
-        <title>Laravel</title>
+@if (session('announcement.create.success'))
+    <div class="alert alert-success">
+        Anuncio creado corectamente
+    </div>
+@endif
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<div class="containter">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1> Bienvenido a wallpop </h1>
+        </div>
+    </div>
 
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
-    
-    <body>
-        @if (Session::get('announcement.create.success') == 'ok')
-            <div class="containter">
-
-                @extends('layouts.app')
-
-                @section('content')
-                <div class="container-fluid py-3" style='background-color:#d7f3e2'>
-                    <div class="d-flex align-items-center ml-5">
-                        <text style='color:#33734b; font-size:18px; font-weight:900' > 
-                            <strong> Anuncio creado corectamente </strong>  
-                        </text>
-                    
-                    </div>
-                </div>
-
-                <div class="containter">       
-                        <div class="d-flex justify-content-center">
-                            <text style='color:black; font-size:35px; font-weight:900' > 
-                                <strong> Bienvenido a wallpop  </strong>  
-                            </text>
-                        </div>
-                </div>
-
-                @foreach ($announcements as $announcement)
-                    <div class="row justify-content-center mb-5">
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    {{$announcement->title}}
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        <img src='https://via.placeholder.com/300' class='rounded float-right' alt="">
-                                        {{$announcement->body}}
-                                    </p>
-                                </div>
-                                <div class="card-footer d-flex justify-content-between">
-                                    <strong>Category: <a href="#"> {{$announcement->category->name}} </a></strong>
-                                    <i> {{$announcement->created_at->format('d/m/Y')}} - {{$announcement->user->name}} </i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                @endforeach
-                @endsection
-            </div>
-
-        @else 
-            <div class="flex-center position-ref full-height">
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <a href="{{ route('login') }}">Login</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-
-                <div class="content">
-                    <div class="title m-b-md">
-                        Laravel
-                    </div>
-
-                    <div class="links">
-                        <a href="https://laravel.com/docs">Docs</a>
-                        <a href="https://laracasts.com">Laracasts</a>
-                        <a href="https://laravel-news.com">News</a>
-                        <a href="https://blog.laravel.com">Blog</a>
-                        <a href="https://nova.laravel.com">Nova</a>
-                        <a href="https://forge.laravel.com">Forge</a>
-                        <a href="https://vapor.laravel.com">Vapor</a>
-                        <a href="https://github.com/laravel/laravel">GitHub</a>
-                    </div>
-                </div>
-            </div>
-        @endif
-    </body>
-</html>
+    @foreach($announcements as $announcement)
+        @include('announcement\one')
+    @endforeach
+</div>
+@endsection

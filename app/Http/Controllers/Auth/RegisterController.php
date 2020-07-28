@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
+use App\Category;
 
 class RegisterController extends Controller
 {
@@ -39,6 +41,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $categories = Category::all();
+        View::share('categories', $categories);
     }
 
     /**

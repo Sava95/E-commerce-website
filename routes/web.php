@@ -13,16 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','PageController@index');
+
+Route::get('/','PublicController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-# My Routes
 Route::get('/announcement/new', 'HomeController@newAnnouncement')->name('announcement.new');
-
 Route::post('/announcement/create', 'HomeController@createAnnouncement')->name('announcement.create');
+Route::get('/announcement/{name}/{id}', 'HomeController@oneAnnouncement')->name('announcement.one'); 
 
-
-
+Route::get('/category/{name}/{id}/announcements', 'PublicController@announcementsByCategory')->name('public.announcements.category');
 
 Auth::routes();

@@ -7,7 +7,7 @@ use App\Announcement;
 
 class Category extends Model
 {
-    public function announcement()
+    public function announcements()
     {
         return $this->hasMany(Announcement::class);
     }
