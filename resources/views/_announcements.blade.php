@@ -8,7 +8,7 @@
         </div>
     </div>
     @foreach($announcements as $announcement)
-        @include('announcement\one')
+        @include('announcement.one')
     @endforeach
 
     <div class="row justify-content-center">

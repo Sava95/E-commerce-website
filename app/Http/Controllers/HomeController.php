@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     public function newAnnouncement() 
     {
-        return view('announcement\new'); 
+        return view('announcement.new'); 
     }
     
     public function createAnnouncement(AnnouncementRequest $request)
@@ -58,7 +58,7 @@ class HomeController extends Controller
     {
         $announcement = Announcement::find($id);
        
-        return view('announcement\details', compact('announcement'));
+        return view('announcement.details', compact('announcement'));
     }
    
 
