@@ -29,8 +29,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home', compact('categories'));
+    {   
+        return view('home');
     }
 
     # My Controls
