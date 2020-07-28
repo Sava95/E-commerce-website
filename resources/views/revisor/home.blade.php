@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="row justify-content-center mt-5 mr-5 ml-5">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <form method='POST' action="{{ route('revisor.reject', $announcement->id) }}">
                                     @csrf
                                     <div class='d-flex justify-content-center'>
@@ -77,11 +77,20 @@
                                 </form>
                             </div>
 
-                            <div class="col-md-6 text-right">
+                            <div class="col-md-4 text-right">
                                 <form method='POST' action="{{ route('revisor.accept', $announcement->id) }}">
                                     @csrf
                                     <div class='d-flex justify-content-center'>
                                         <button type='submit' class='btn btn-success'> Accept </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-md-4 text-right">
+                                <form method='POST' action="#">
+                                    @csrf
+                                    <div class='d-flex justify-content-center'>
+                                        <button type='submit' class='btn btn-warning'> Undo </button>
                                     </div>
                                 </form>
                             </div>
