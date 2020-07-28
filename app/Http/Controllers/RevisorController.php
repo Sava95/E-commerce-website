@@ -39,5 +39,9 @@ class RevisorController extends Controller
     {
         return $this->setAccepted($announcement_id, false);
     }
-        
+    
+      public function undo($announcement_id)
+    {
+        return $this->setAccepted($announcement_id, null);
+    }
 }
