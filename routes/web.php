@@ -23,4 +23,6 @@ Route::get('/announcement/{name}/{id}', 'HomeController@oneAnnouncement')->name(
 
 Route::get('/category/{name}/{id}/announcements', 'PublicController@announcementsByCategory')->name('public.announcements.category');
 
+Route::get('/revisor/home','RevisorController@index');
+
 Auth::routes();

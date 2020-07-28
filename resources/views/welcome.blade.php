@@ -7,6 +7,12 @@
     </div>
 @endif
 
+@if (session('access.denied.revisor.only'))
+    <div class="alert alert-danger">
+        Acceso denegado - solo para revisores
+    </div>
+@endif
+
 <div class="containter">
     <div class="row justify-content-center">
         <div class="col-md-8">

@@ -9,7 +9,7 @@ use App\Console\Commands\MakeUserRevisor;
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
+     * The Artisan commands provided by your application.   
      *
      * @var array
      */
