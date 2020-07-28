@@ -17,12 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PublicController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/announcement/new', 'HomeController@newAnnouncement')->name('announcement.new');
-Route::post('/announcement/create', 'HomeController@createAnnouncement')->name('announcement.create');
-Route::get('/announcement/{name}/{id}', 'HomeController@oneAnnouncement')->name('announcement.one'); 
+Route::get('/announcement/new', 'HomeController@newAnnouncement')->name('announcement.new'); //make new announcement
+Route::post('/announcement/create', 'HomeController@createAnnouncement')->name('announcement.create'); //function for saving ads
+Route::get('/announcement/{name}/{id}', 'HomeController@oneAnnouncement')->name('announcement.one'); //details of one announcement
 
-Route::get('/category/{name}/{id}/announcements', 'PublicController@announcementsByCategory')->name('public.announcements.category');
+Route::get('/category/{name}/{id}/announcements', 'PublicController@announcementsByCategory')->name('public.announcements.category'); //view ads that are in one category
 
-Route::get('/revisor/home','RevisorController@index');
+
+/* Revisor rutes  */
+Route::get('/revisor/home', 'RevisorController@index')->name('revisor.home');
+Route::post('/revisor/announcement/{id}/accept', 'RevisorController@accept')->name('revisor.accept');
+Route::post('/revisor/announcement/{id}/reject', 'RevisorController@reject')->name('revisor.reject');
 
 Auth::routes();
