@@ -52,14 +52,8 @@
                                 @foreach ($announcement->images as $image)
                                     <div class="row md-2">
                                         <div class="col-md-4">
-                                        <img 
-                                            src="{{ Storage::url($image->file) }}" class="rounded" alt="">
-                                        </div>
-                                        <div class="col-md-8">
-                                            {{ $image->id }} <br>
-                                            {{ $image->file }} <br>
-                                            {{ Storage::url($image->file )}} <br>
-                                        </div>
+                                        <img src="{{ Storage::url($image->file) }}" class="rounded" alt="">
+                                        </div>   
                                     </div>
                                 @endforeach
                             </div>

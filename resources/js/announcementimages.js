@@ -8,40 +8,42 @@ $(function(){
             url: '/announcement/images/upload',  // temp folder where we are sending the parameters
             params: {
                 _token: csrfToken,
-                uniqueSecret: uniqueSecret
+                uniqueSecret: uniqueSecret 
             },
         
             addRemoveLinks:true,
-       
 
-            init: function() {
+        
+            init: function() {  // init- when you load the page, this is the first thing that happens 
                 $.ajax({
                     type: "GET",
-                    url: '/annoucement/images',
+                    url: '/announcement/images',
                     data: {
                         uniqueSecret: uniqueSecret
                     },
 
                     dataType: 'json'
+
                 }).done(function(data){
                     $.each(data, function(key, value){
                         let file = {
-                            serverId: value.id
+                            serverId: value.id // put the id of the image to the id of the server
                         };
 
-                        myDropzone.options.addedfile.call(myDropzone, file);
-                        myDropzone.options.thumbnail.call(myDropzone, file, value.src);
-                    })
-                })
+                        myDropzone.options.addedfile.call(myDropzone, file); // help the sys identify the id of the img
+                        myDropzone.options.thumbnail.call(myDropzone, file, value.src); // add a preview of the image for this file
+                    });
+                });
             }
+           
         });
 
-        myDropzone.on('success', function(file, response) //matching id of the img and the server, and uploading the img to the cloud
+        myDropzone.on("success", function(file, response) // when the upload is successful
         {
-            file.serverId = response.id;
+            file.serverId = response.id; //matching id of the img and the server, and uploading the img to the cloud
         });
 
-        myDropzone.on('removefile', function(file) 
+        myDropzone.on("removedfile", function(file) 
         {
             $.ajax({
                 type: 'DELETE',
@@ -57,4 +59,4 @@ $(function(){
             });
         });
     }
-});
+})
