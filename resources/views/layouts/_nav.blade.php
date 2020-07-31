@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Categorias <span class='caret'> </span> </a>
+                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> {{ __('ui.categories') }} <span class='caret'> </span> </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="categoriesDropDown">
                         @foreach ($categories as $category)
@@ -28,10 +28,28 @@
                     </div>
                 </li>           
 
-                <li class="d-flex align-items-center ml-2">
-                    <a class="nav_link" href="{{route('announcement.new')}}"> Nuevo anuncio <a> 
+                <li class="d-flex nav-item align-items-center ml-2 mr-2">
+                    <a class="nav_link" href="{{route('announcement.new')}}"> {{ __('ui.new_ad') }} </a> 
                 </li>   
+
+                <div class="dropdown">
+                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Language <span class='caret'> </span> </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li class='dropdown-item'>
+                                @include('layouts._locale', ['lang' => 'es', 'nation' => 'es'])
+                            </li>
+                            <li class='dropdown-item'>
+                                @include('layouts._locale', ['lang' => 'it', 'nation' => 'it'])
+                            </li>
+                            <li class='dropdown-item'>
+                                @include('layouts._locale', ['lang' => 'gb', 'nation' => 'gb'])
+                            </li>
+                        </div>
+                </div>
+        
+                                    
             </ul>
+
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
@@ -49,7 +67,7 @@
                     @if (Auth::user()->is_revisor)
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('revisor.home') }}">
-                            Revisor Casa
+                            {{ __('ui.revisor') }}
                             <span class="badge badge-pill badge-warning">
                                 {{\App\Announcement::ToBeRevisionedCount() }}
                             </span>

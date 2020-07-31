@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Announcement;
 use App\Category;
 use Illuminate\Support\Facades\View;
+use App\AnnouncementImage;
+use App;
 
 class PublicController extends Controller
 {
@@ -25,9 +27,17 @@ class PublicController extends Controller
  
     public function announcementsByCategory($name, $category_id) 
     {
+        
         $category = Category::find($category_id);
         $announcements = $category->announcements()->where('is_accepted', true)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('_announcements', compact('category', 'announcements'));
+    }
+
+    public function locale($locale)
+    {
+       
+        session()->put('locale', $locale);
+        return redirect()->back();
     }
 }

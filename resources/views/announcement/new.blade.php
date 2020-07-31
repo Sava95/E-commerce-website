@@ -9,8 +9,15 @@
                     <h1> Nuevo anuncio </h1>
                 </div>
                 <div class="card-body">
+                    <h3> Debug Secret: {{ $uniqueSecret}} </h3>
                     <form method="POST" action="{{route('announcement.create')}}">
                         @csrf
+
+                        <input 
+                            type="hidden"
+                            name="uniqueSecret"
+                            value="{{$uniqueSecret}}">
+
                         <div class="form-group row">
                             <label for='category' class='col-md-4 col-form-label text-md-right'> Categoria </label>
                             <div class="col-md-6">
@@ -51,6 +58,18 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for='images' class='col-md-12 col-form-label'> Imagenes </label>
+                            <div class="col-md-12">
+                                <div class="dropzone" id='drophere'> </div>
+                                
+                                @error('images')
+                                    <span class="invalid-feedback" role='alert'> <strong>{{$message}}</strong> </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <button type='submit'> Crea </button>
                     </form>
                 </div>

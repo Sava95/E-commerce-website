@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Announcement;
 use App\Category;
 use Illuminate\Support\Facades\View;
+use App\AnnouncementImage;
+use Storage;
 
 class RevisorController extends Controller
 {
@@ -27,6 +29,7 @@ class RevisorController extends Controller
         $announcement = Announcement::find($announcement_id);
         $announcement->is_accepted = $value;
         $announcement->save();
+        
         return redirect(route('revisor.home'));
     }
 
@@ -40,7 +43,7 @@ class RevisorController extends Controller
         return $this->setAccepted($announcement_id, false);
     }
     
-      public function undo($announcement_id)
+    public function undo($announcement_id)
     {
         return $this->setAccepted($announcement_id, null);
     }

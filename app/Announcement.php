@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\User;
+use App\AnnouncementImage;
 
 class Announcement extends Model
 {
@@ -18,9 +19,16 @@ class Announcement extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(AnnouncementImage::class);
+    }
+
 
     static public function ToBeRevisionedCount()
     {
         return Announcement::where('is_accepted', null)->count();
     }
+
+
 }

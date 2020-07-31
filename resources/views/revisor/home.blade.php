@@ -47,24 +47,24 @@
                             <div class="col-md-2">
                                 <h5> Imagenes </h5>
                             </div>
-                        </div>
-                    
-                        <div class="row mb-2 d-flex justify-content-start">
-                            <div class="col-md-2">
-                                <img src='https://via.placeholder.com/150' class='rounded' alt="">
+                        
+                            <div class="col-md-10">
+                                @foreach ($announcement->images as $image)
+                                    <div class="row md-2">
+                                        <div class="col-md-4">
+                                        <img 
+                                            src="{{ Storage::url($image->file) }}" class="rounded" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            {{ $image->id }} <br>
+                                            {{ $image->file }} <br>
+                                            {{ Storage::url($image->file )}} <br>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="col-md-2">
-                                <img src='https://via.placeholder.com/150' class='rounded' alt="">
-                            </div>
-                        </div>
-                        <div class="row mb-2 d-flex justify-content-start">
-                            <div class="col-md-2 d-flex justify-content-center">
-                                <text> Image 1 </text>
-                            </div>
-                    
-                            <div class="col-md-2 d-flex justify-content-center">
-                                <text> Image 2 </text>
-                            </div>
+
+
                         </div>
 
                         <div class="row justify-content-center mt-5 mr-5 ml-5">
@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="col-md-4 text-right">
-                                <form method='POST' action="#">
+                                <form method='POST' action="">
                                     @csrf
                                     <div class='d-flex justify-content-center'>
                                         <button type='submit' class='btn btn-warning'> Undo </button>
