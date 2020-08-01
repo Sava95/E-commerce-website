@@ -43,22 +43,24 @@
 
                         <hr>
 
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-md-2">
                                 <h5> {{ __('ui.img') }} </h5>
                             </div>
-                        
-                            <div class="col-md-10">
-                                @foreach ($announcement->images as $image)
-                                    <div class="row md-2">
-                                        <div class="col-md-4">
+                        </div>
+
+                        <div class="row">
+                            @foreach ($announcement->images as $image)
+                                <div class="col-md-4">
+                                        
+                                    <div class="col-md-4">
                                         <img src="{{ $image->getUrl(300, 150) }}" class="rounded" alt="">
-                                        </div>   
-                                    </div>
-                                @endforeach
-                            </div>
-
-
+                                    </div>   
+                                
+                                      
+                                </div>
+                            @endforeach
+                        
                         </div>
 
                         <div class="row justify-content-center mt-5 mr-5 ml-5">

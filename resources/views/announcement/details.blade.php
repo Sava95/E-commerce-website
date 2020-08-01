@@ -7,20 +7,30 @@
             <div class="card-header">
                 <a href="{{route('announcement.one', [$announcement->title, $announcement->id])}}">{{$announcement->title}}</a>
             </div>
+
             <div class="card-body">
-                <p>
-                    <img src='https://via.placeholder.com/300' class='rounded float-right' alt="">
-                    {{$announcement->body}}
-                </p>
+                <div class="row">
+                    <div class="col-md-8">
+                        {{$announcement->body}}
+                    </div>
+                    <div class="col-md-4">
+                        @foreach ($announcement->images as $image)
+                            <div class="col-md-4 my-3">
+                                    <div class="row md-2">
+                                        <div class="col-md-4">
+                                        <img src="{{ $image->getUrl(300, 150) }}" class="rounded" alt=""> 
+                                        </div>   
+                                    </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p>
-                    <img src='https://via.placeholder.com/300' class='rounded float-right' alt="">
-                   
-                </p>
+
+         
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <strong>Category: <a href="{{route('public.announcements.category',
+                <strong>{{ __('ui.category') }}: <a href="{{route('public.announcements.category',
                 [ 
                     $announcement->category->name,
                     $announcement->category->id

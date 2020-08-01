@@ -19,4 +19,6 @@ return [
     "error_message" => "Acceso denegado - solo para revisores",
     "accept" => "Aceptar",
     "reject" => "Rechazar",
+    "for_category" => " Anuncios por categoria",
+    "price" => "Precio",
 ];

@@ -19,4 +19,6 @@ return [
     "error_message" => "Access Denied - For Reviewers Only",
     "accept" => "Accept",
     "reject" => "Reject",
+    "for_category" => "Advertisement for the category",
+    "price" => "Price",
 ];

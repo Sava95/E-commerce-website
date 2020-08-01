@@ -31,21 +31,6 @@
                 <li class="d-flex nav-item align-items-center ml-2 mr-2">
                     <a class="nav_link" href="{{route('announcement.new')}}"> {{ __('ui.new_ad') }} </a> 
                 </li>   
-
-                <div class="dropdown">
-                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> {{ __('ui.lang') }} <span class='caret'> </span> </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li class='dropdown-item'>
-                                @include('layouts._locale', ['lang' => 'es', 'nation' => 'es'])
-                            </li>
-                            <li class='dropdown-item'>
-                                @include('layouts._locale', ['lang' => 'it', 'nation' => 'it'])
-                            </li>
-                            <li class='dropdown-item'>
-                                @include('layouts._locale', ['lang' => 'gb', 'nation' => 'gb'])
-                            </li>
-                        </div>
-                </div>
         
                                     
             </ul>
@@ -64,16 +49,32 @@
                     @endif
                 @else
 
-                    @if (Auth::user()->is_revisor)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('revisor.home') }}">
-                            {{ __('ui.revisor') }}
-                            <span class="badge badge-pill badge-warning">
-                                {{\App\Announcement::ToBeRevisionedCount() }}
-                            </span>
-                        </a>
-                    </li>
-                    @endif
+                @if (Auth::user()->is_revisor)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('revisor.home') }}">
+                        {{ __('ui.revisor') }}
+                        <span class="badge badge-pill badge-warning">
+                            {{\App\Announcement::ToBeRevisionedCount() }}
+                        </span>
+                    </a>
+                </li>
+                @endif
+
+                <div class="dropdown">
+                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> {{ __('ui.lang') }} <span class='caret'> </span> </a>
+                    
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li class='dropdown-item'>
+                            @include('layouts._locale', ['lang' => 'es', 'nation' => 'es'])
+                        </li>
+                        <li class='dropdown-item'>
+                            @include('layouts._locale', ['lang' => 'it', 'nation' => 'it'])
+                        </li>
+                        <li class='dropdown-item'>
+                            @include('layouts._locale', ['lang' => 'gb', 'nation' => 'gb'])
+                        </li>
+                    </div>
+                </div>
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

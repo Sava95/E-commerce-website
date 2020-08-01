@@ -19,6 +19,8 @@ return [
     "error_message" => "Accesso negato - Solo per revisori",
     "accept" => "Accettare",
     "reject" => "Rifiutare",
+    "for_category" => "Annunci per categoria",
+    "price" => "Prezzo",
 
 
 ];
