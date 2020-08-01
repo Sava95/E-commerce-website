@@ -8,6 +8,7 @@ use App\Http\Requests\AnnouncementRequest;
 use App\Category;
 use Illuminate\Support\Facades\View;
 use App\AnnouncementImage;
+use App\Jobs\ResizeImage;
 
 use Storage;
 use File;
@@ -73,6 +74,8 @@ class HomeController extends Controller
             $newfileName = "public/announcements/{$new_announcement->id}/{$fileName}";  // from temp to public folder
             Storage::move($image, $newfileName);
 
+            dispatch(new ResizeImage($newfileName, 300, 150));
+
             $i->file = $newfileName;
             $i->announcement_id = $new_announcement->id;
 
@@ -90,6 +93,9 @@ class HomeController extends Controller
     {
         $uniqueSecret = $request->input('uniqueSecret');
         $fileName = $request->file('file')->store("public/temp/{$uniqueSecret}"); //file-atribute of the request,'file'- type of data
+
+        dispatch(new ResizeImage($fileName, 120, 120));
+
         session()->push("images.{$uniqueSecret}", $fileName); // "images...."- temp folder, "$fileName" - PATH that contains the img
         
         return response()->json(['id'=>$fileName]);
@@ -116,12 +122,12 @@ class HomeController extends Controller
 
         $images = array_diff($images, $removedImages);
 
-        $date = []; // storing in json format
+        $data = []; // storing in json format
 
         foreach($images as $image) {
             $data[] = [
                 'id'=> $image,
-                'src'=> Storage::url($image)
+                'src'=> AnnouncementImage::getUrlByFilePath($image, 120, 120)
             ];
         }
 

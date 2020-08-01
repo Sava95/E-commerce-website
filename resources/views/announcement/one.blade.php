@@ -8,7 +8,7 @@
                 <p>
                     @foreach($announcement->images as $image)
                     <img 
-                    src="{{ Storage::url($image->file) }}" 
+                    src="{{ $image->getUrl(300, 150) }}" 
                     class="rounded float-right" alt="">
                     @endforeach
 

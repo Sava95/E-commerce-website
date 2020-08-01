@@ -29,7 +29,8 @@ $(function(){
                         let file = {
                             serverId: value.id // put the id of the image to the id of the server
                         };
-
+                        
+                    // When you make a validation error, it saved the images in the dropbox
                         myDropzone.options.addedfile.call(myDropzone, file); // help the sys identify the id of the img
                         myDropzone.options.thumbnail.call(myDropzone, file, value.src); // add a preview of the image for this file
                     });

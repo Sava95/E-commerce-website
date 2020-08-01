@@ -40806,28 +40806,29 @@ $(function () {
         _token: csrfToken,
         uniqueSecret: uniqueSecret
       },
-      addRemoveLinks: true
-      /*
-      init: function() {  // init- when you load the page, this is the first thing that happens 
-          $.ajax({
-              type: "GET",
-              url: '/announcement/images',
-              data: {
-                  uniqueSecret: uniqueSecret
-              },
-                dataType: 'json'
-            }).done(function(data){
-              $.each(data, function(key, value){
-                  let file = {
-                      serverId: value.id // put the id of the image to the id of the server
-                  };
-                    myDropzone.options.addedfile.call(myDropzone, file); // help the sys identify the id of the img
-                  myDropzone.options.thumbnail.call(myDropzone, file, value.src); // add a preview of the image for this file
-              });
-          });
-      }
-      */
+      addRemoveLinks: true,
+      init: function init() {
+        // init- when you load the page, this is the first thing that happens 
+        $.ajax({
+          type: "GET",
+          url: '/announcement/images',
+          data: {
+            uniqueSecret: uniqueSecret
+          },
+          dataType: 'json'
+        }).done(function (data) {
+          $.each(data, function (key, value) {
+            var file = {
+              serverId: value.id // put the id of the image to the id of the server
 
+            }; // When you make a validation error, it saved the images in the dropbox
+
+            myDropzone.options.addedfile.call(myDropzone, file); // help the sys identify the id of the img
+
+            myDropzone.options.thumbnail.call(myDropzone, file, value.src); // add a preview of the image for this file
+          });
+        });
+      }
     });
     myDropzone.on("success", function (file, response) // when the upload is successful
     {
