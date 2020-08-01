@@ -8,13 +8,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Anuncio # {{$announcement->id}}
+                        {{ __('ui.ad') }} # {{$announcement->id}}
                     </div>
 
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <h5> Usuario </h5>
+                                <h5> {{ __('ui.user') }} </h5>
                             </div>
                             <div class="col-md-10">
                                 # {{ $announcement->user->id }},
@@ -27,7 +27,7 @@
 
                         <div class="row">
                             <div class="col-md-2">
-                                <h5> Titulo </h5>
+                                <h5> {{ __('ui.title') }} </h5>
                             </div>
                             <div class="col-md-10"> {{$announcement->title}} </div>
                         </div>
@@ -36,7 +36,7 @@
 
                         <div class="row">
                             <div class="col-md-2">
-                                <h5> Descripcion </h5>
+                                <h5> {{ __('ui.description') }} </h5>
                             </div>
                             <div class="col-md-10"> {{$announcement->body}} </div>
                         </div>
@@ -45,7 +45,7 @@
 
                         <div class="row">
                             <div class="col-md-2">
-                                <h5> Imagenes </h5>
+                                <h5> {{ __('ui.img') }} </h5>
                             </div>
                         
                             <div class="col-md-10">
@@ -62,32 +62,24 @@
                         </div>
 
                         <div class="row justify-content-center mt-5 mr-5 ml-5">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <form method='POST' action="{{ route('revisor.reject', $announcement->id) }}">
                                     @csrf
                                     <div class='d-flex justify-content-center'>
-                                        <button type='submit' class='btn btn-danger'> Reject </button>
+                                        <button type='submit' class='btn btn-danger'> {{ __('ui.reject') }} </button>
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="col-md-4 text-right">
+                            <div class="col-md-6 text-right">
                                 <form method='POST' action="{{ route('revisor.accept', $announcement->id) }}">
                                     @csrf
                                     <div class='d-flex justify-content-center'>
-                                        <button type='submit' class='btn btn-success'> Accept </button>
+                                        <button type='submit' class='btn btn-success'> {{ __('ui.accept') }} </button>
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="col-md-4 text-right">
-                                <form method='POST' action="">
-                                    @csrf
-                                    <div class='d-flex justify-content-center'>
-                                        <button type='submit' class='btn btn-warning'> Undo </button>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                     
@@ -99,7 +91,7 @@
 
 @else 
 
-    <h3 class="text-center"> no hay anuncios para revisar </h3> 
+    <h3 class="text-center"> {{ __('ui.revisor_message') }} </h3> 
 
 @endif
 

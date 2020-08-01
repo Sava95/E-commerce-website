@@ -6,10 +6,9 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
-                    <h1> Nuevo anuncio </h1>
+                    <h1> {{ __('ui.new_ad') }} </h1>
                 </div>
                 <div class="card-body">
-                    <h3> Debug Secret: {{ $uniqueSecret}} </h3>
                     <form method="POST" action="{{route('announcement.create')}}">
                         @csrf
 
@@ -19,7 +18,7 @@
                             value="{{$uniqueSecret}}">
 
                         <div class="form-group row">
-                            <label for='category' class='col-md-4 col-form-label text-md-right'> Categoria </label>
+                            <label for='category' class='col-md-4 col-form-label text-md-right'> {{ __('ui.category') }} </label>
                             <div class="col-md-6">
                                 <select class='form-control' name='category' id="category">
                                     @foreach($categories as $category)
@@ -36,7 +35,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for='title' class='col-md-4 col-form-label text-md-right'> Titulo </label>
+                            <label for='title' class='col-md-4 col-form-label text-md-right'> {{ __('ui.title') }}  </label>
                             <div class="col-md-6">
                                 <input type='text' class="form-control @error('title') is-invalid @enderror" name='title'
                                        value ="{{old('title')}}" required autofocus>
@@ -48,7 +47,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for='body' class='col-md-4 col-form-label text-md-right'> Anuncio </label>
+                            <label for='body' class='col-md-4 col-form-label text-md-right'> {{ __('ui.description') }} </label>
                             <div class="col-md-6">
                                 <textarea type='text' class="form-control @error('body') is-invalid @enderror" name='body'
                                        cols='30' rows='10' value ="{{old('body')}}" required > </textarea>
@@ -60,7 +59,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for='images' class='col-md-12 col-form-label'> Imagenes </label>
+                            <label for='images' class='col-md-12 col-form-label'> {{ __('ui.img') }} </label>
                             <div class="col-md-12">
                                 <div class="dropzone" id='drophere'> </div>
                                 
@@ -69,8 +68,8 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <button type='submit'> Crea </button>
+                    
+                        <button type='submit' class="btn btn-lg btn-primary"> {{ __('ui.create') }} </button>
                     </form>
                 </div>
             </div>

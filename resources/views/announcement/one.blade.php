@@ -16,7 +16,7 @@
                 </p>
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <strong>Category: <a href="{{route('public.announcements.category',
+                <strong>{{ __('ui.category') }}: <a href="{{route('public.announcements.category',
                 [ 
                     $announcement->category->name,
                     $announcement->category->id

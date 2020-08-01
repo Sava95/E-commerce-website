@@ -3,13 +3,13 @@
 
 @if (session('announcement.create.success'))
     <div class="alert alert-success">
-        Anuncio creado corectamente
+        {{ __('ui.correct_message') }}
     </div>
 @endif
 
 @if (session('access.denied.revisor.only'))
     <div class="alert alert-danger">
-        Acceso denegado - solo para revisores
+        {{ __('ui.error_message') }}
     </div>
 @endif
 

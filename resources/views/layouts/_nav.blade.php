@@ -33,7 +33,7 @@
                 </li>   
 
                 <div class="dropdown">
-                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Language <span class='caret'> </span> </a>
+                    <a id="categoriesDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> {{ __('ui.lang') }} <span class='caret'> </span> </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li class='dropdown-item'>
                                 @include('layouts._locale', ['lang' => 'es', 'nation' => 'es'])
