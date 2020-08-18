@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="containter">
-    <div class="row justify-content-center">
+    <div class="row-12 d-flex justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
@@ -23,7 +23,10 @@
                                 <select class='form-control' name='category' id="category">
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}" @if(old('category') == $category->id) selected @endif>
-                                        {{$category->name}}
+
+                                        <?php $cat = $category->name;?>
+
+                                        {{ __("ui.$cat") }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -61,15 +64,17 @@
                         <div class="form-group row">
                             <label for='price' class='col-md-4 col-form-label text-md-right'> {{ __('ui.price') }}  </label>
                             
-                            <div class="col-md-6">
-                                <input type='number' class="form-control col-md-4 @error('price') is-invalid @enderror" name='price'
+                            <div class="col-md-2">
+                                <input type='text' class="form-control col-md-12 @error('price') is-invalid @enderror" name='price'
                                        value ="{{old('price')}}" required > 
-
 
                                 @error('price')
                                     <span class="invalid-feedback" role='alert'> <strong>{{$message}}</strong> </span>
                                 @enderror
                             </div>
+
+                            <label for='price' class='col-md-2 col-form-label '> € </label>
+
                         </div>
 
                         <div class="form-group row">

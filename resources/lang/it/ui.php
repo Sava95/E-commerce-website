@@ -21,6 +21,28 @@ return [
     "reject" => "Rifiutare",
     "for_category" => "Annunci per categoria",
     "price" => "Prezzo",
+    
+    "clothing" => "Vestiario",
+    "sp_gear" => "Equipaggiamento sportivo",
+    "books" => "Libri",
+    "mobiles" => "Telefoni cellulari",
+    "music" => "Strumenti musicali",
+    "cameras" => "Macchine fotografiche",
+    "furniture" => "Mobilia",
+    "pc" => "Computer / Laptop",
+    "camp" => "Attrezzatura da campeggio",
+    "home_app" => "Elettrodomestici",
+    
+    "dashboard" => "Pannello di controllo",
+    "logged" => "Ti sei autenticato!",
 
+    "login" => "Accesso",
+    "email" => "E-mail",
+    "pass" => "Password",
+    "remember_me" => "Ricordati di me",
+    "forget_pass" => "Hai dimenticato la password?",
+    "register" => "Registrati",
+    "name" => "Nome",
+    "con_pass" => "Conferma Password"
 
 ];

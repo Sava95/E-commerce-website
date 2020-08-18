@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="row justify-content-center mb-5">
+<div class="row-12 d-flex justify-content-center mb-5">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
@@ -9,26 +9,41 @@
             </div>
 
             <div class="card-body">
-                <div class="row">
+                <div class="d-flex">
                     <div class="col-md-8">
                         {{$announcement->body}}
                     </div>
+                    
                     <div class="col-md-4">
                         @foreach ($announcement->images as $image)
-                            <div class="col-md-4 my-3">
-                                    <div class="row md-2">
-                                        <div class="col-md-4">
-                                        <img src="{{ $image->getUrl(300, 150) }}" class="rounded" alt=""> 
-                                        </div>   
-                                    </div>
+                            <div class="d-flex justify-content-center my-2">
+                                <?php 
+
+                                    $str = ltrim($image->file, 'public/'); 
+                                    $file = "storage/{$str}";
+                                    $img = getimagesize($file);
+                                    $width = $img[0];
+                                    $height = $img[1]; ?>
+
+                                @if ($width > $height)
+                                    <img src="{{ $image->getUrl(300, 200) }}" class="rounded" alt="">
+                                @else 
+                                    <img src="{{ $image->getUrl(200, 300) }}" class="rounded" alt="">
+                                @endif
                             </div>
                         @endforeach
                     </div>
+                
                 </div>
-            </div>
 
-         
-            </div>
+                <div class="col-md-8" style="font-style: italic; margin-top: 100px">
+                    <p> {{ __('ui.price') }}: {{$announcement->price}} €</p>
+                </div>
+                    
+                </div>
+           
+
+        
             <div class="card-footer d-flex justify-content-between">
                 <strong>{{ __('ui.category') }}: <a href="{{route('public.announcements.category',
                 [ 
@@ -42,6 +57,5 @@
     </div>
 </div>
       
-    
-</div>
+
 @endsection

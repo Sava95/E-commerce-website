@@ -19,10 +19,10 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-        
+
         $categories = [
-            'motores', 'auto', 'electrodomésticos', 'libros', 
-            'juegos', 'deporte', 'imobiles', 'moviles', 'mobiliario'
+            'clothing', 'sp_gear', 'books', 'mobiles', 'music', 'cameras', 
+            'furniture', 'pc', 'camp', 'home_app'
         ];
 
         foreach ($categories as $category) {

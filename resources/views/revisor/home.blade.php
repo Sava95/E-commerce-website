@@ -42,6 +42,15 @@
                         </div>
 
                         <hr>
+                        
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h5> {{ __('ui.price') }} </h5>
+                            </div>
+                            <div class="col-md-10"> {{$announcement->price}} €</div>
+                        </div>
+
+                        <hr>
 
                         <div class="row mb-3">
                             <div class="col-md-2">
@@ -49,18 +58,27 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="d-flex">
                             @foreach ($announcement->images as $image)
-                                <div class="col-md-4">
-                                        
+                                <?php 
+
+                                    $str = ltrim($image->file, 'public/'); //deletes public/ from the string
+                                    $file = "storage/{$str}";
+                                    $img = getimagesize($file);
+                                    $width = $img[0];
+                                    $height = $img[1]; ?>
+
+                                @if ($width > $height)
                                     <div class="col-md-4">
-                                        <img src="{{ $image->getUrl(300, 150) }}" class="rounded" alt="">
+                                        <img src="{{ $image->getUrl(300, 200) }}" class="rounded" alt="">
                                     </div>   
-                                
-                                      
-                                </div>
+                                @else 
+                                    <div class="col-md-4">
+                                        <img src="{{ $image->getUrl(200, 300) }}" class="rounded" alt="">
+                                    </div>
+                                    
+                                @endif
                             @endforeach
-                        
                         </div>
 
                         <div class="row justify-content-center mt-5 mr-5 ml-5">
@@ -93,7 +111,7 @@
 
 @else 
 
-    <h3 class="text-center"> {{ __('ui.revisor_message') }} </h3> 
+    <h3 class="text-center" style="color:white"> {{ __('ui.revisor_message') }} </h3> 
 
 @endif
 

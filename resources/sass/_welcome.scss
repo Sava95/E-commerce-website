@@ -1,11 +1,30 @@
 html, body {
-    background-color: #fff;
+    background-image: url("/img/blue_3.jpg");
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
-    height: 100vh;
+    height: 100%s;
     margin: 0;
+    position: relative;
+
 }
+
+footer {
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.footer_fixed {
+    position: fixed;
+
+}
+
+.main {
+    background-color: black;
+}
+
 
 .full-height {
     height: 100vh;
@@ -48,3 +67,48 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.jumbotron {
+    height: 400px;
+}
+
+.jumb_1 {
+    background-image: url('/img/A.jpg');
+    max-width: 99%;
+    max-height: 99%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.jumb_2 {
+    background-image: url('/img/AAA.jpg');
+    max-width: 99%;
+    max-height: 99%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.jumb_3 {
+    background-image: url('/img/AA.jpg');
+    max-width: 99%;
+    max-height: 99%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.jumb_4 {
+    background-image: url('/img/AAAA.jpg');
+    max-width: 99%;
+    max-height: 99%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.jumb_5 {
+    background-image: url('/img/AAAAA.jpg');
+    max-width: 99%;
+    max-height: 99%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+

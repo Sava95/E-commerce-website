@@ -56,6 +56,7 @@ class HomeController extends Controller
         $new_announcement->body = $request->input('body');
         $new_announcement->category_id = $request->input('category');
         $new_announcement->user_id = Auth::user()->id;
+        $new_announcement->price = $request->input('price');
         $new_announcement->save();
 
         $uniqueSecret = $request->input('uniqueSecret');
@@ -71,13 +72,23 @@ class HomeController extends Controller
             $i = new AnnouncementImage();
 
             $fileName = basename($image); // not aa.jpg, not uniqueSecret, random generated name of the browser
-            $newfileName = "public/announcements/{$new_announcement->id}/{$fileName}";  // from temp to public folder
+            $newfileName = "public/announcements/{$new_announcement->id}/{$fileName}";  // from temp to public 
             Storage::move($image, $newfileName);
-
-            dispatch(new ResizeImage($newfileName, 300, 150));
+            
+            $file =  "storage/announcements/{$new_announcement->id}/{$fileName}";
+            $data = getimagesize($file);
+            $width = $data[0];
+            $height = $data[1];
+         
+            if ($width > $height) {
+                dispatch(new ResizeImage($newfileName, 300, 200)); // The dispatch function pushes the job onto the Laravel job queue
+            }
+            else {
+                dispatch(new ResizeImage($newfileName, 200, 300)); // The dispatch function pushes the job onto the Laravel job queue
+            }
 
             $i->file = $newfileName;
-            $i->announcement_id = $new_announcement->id;
+            $i->announcement_id = $new_announcement->id; 
 
             $i->save();
         }

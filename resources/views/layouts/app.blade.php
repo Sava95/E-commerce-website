@@ -18,14 +18,31 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href="css/custom-style.css">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5eb4107702.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div id="app">
+    <div id="app" class='d-flex flex-column justify-content-between' style='height:130vh' >
+
         @include('layouts._nav')
 
-        <main class="py-4">
+        <main class="mb-auto py-4">
             @yield('content')
         </main>
+
+        @include('layouts.footer')
+
     </div>
+
 </body>
 </html>

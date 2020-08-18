@@ -19,15 +19,24 @@ class PublicController extends Controller
 
     public function index() 
     {
-        $announcements = Announcement::where('is_accepted', true)->orderBy('created_at', 'desc')->take(5)->get();
+        $announcements = Announcement::where('is_accepted', true)->orderBy('created_at', 'desc')->paginate(5);
         
-        return view('welcome', compact('announcements'));
+        return view('list_of_ads', compact('announcements'));
+    }
+
+    public function welcome() 
+    {   
+        $announcements = Announcement::all()->where('is_accepted', true);
+        $carousel_1 = $announcements->take(4);
+        $carousel_2 = $announcements->slice(4, 4);   // takes elements: 4, 5, 6, 7 (4 - start, 4 - how many elements)
+
+        
+        return view('welcome', compact('announcements', 'carousel_1', 'carousel_2') );
     }
 
  
     public function announcementsByCategory($name, $category_id) 
     {
-        
         $category = Category::find($category_id);
         $announcements = $category->announcements()->where('is_accepted', true)->orderBy('created_at', 'desc')->paginate(5);
 

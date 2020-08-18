@@ -21,4 +21,27 @@ return [
     "reject" => "Reject",
     "for_category" => "Advertisement for the category",
     "price" => "Price",
+
+    "clothing" => "Clothing",
+    "sp_gear" => "Sport gear",
+    "books" => "Books",
+    "mobiles" => "Mobile phones",
+    "music" => "Musical instruments",
+    "cameras" => "Cameras",
+    "furniture" => "Furniture",
+    "pc" => "Computers/Laptops",
+    "camp" => "Camping equipment",
+    "home_app" => "Household appliances",
+
+    "dashboard" => "Dashboard",
+    "logged" => "You are logged in!",
+
+    "login" => "Login",
+    "email" => "E-Mail Address",
+    "pass" => "Password",
+    "remember_me" => "Remember Me",
+    "forget_pass" => "Forgot Your Password?",
+    "register" => "Register",
+    "name" => "Name",
+    "con_pass" => "Confirm Password",
 ];
