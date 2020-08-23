@@ -10946,6 +10946,11 @@ footer {
   width: 100%;
 }
 
+strong {
+  font-weight: bold;
+  color: black;
+}
+
 .footer_fixed {
   position: fixed;
 }
@@ -11038,6 +11043,10 @@ footer {
   max-height: 99%;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.p_labels {
+  margin-bottom: 5px;
 }
 
 .flag-icon-background,

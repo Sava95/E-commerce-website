@@ -16,6 +16,11 @@ footer {
     width: 100%;
 }
 
+strong {
+    font-weight:bold;
+    color:black;
+}
+
 .footer_fixed {
     position: fixed;
 
@@ -112,3 +117,6 @@ footer {
     background-size: contain;
 }
 
+.p_labels {
+    margin-bottom:5px;
+}

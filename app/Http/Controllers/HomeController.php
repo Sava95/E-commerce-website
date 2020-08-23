@@ -9,6 +9,8 @@ use App\Category;
 use Illuminate\Support\Facades\View;
 use App\AnnouncementImage;
 use App\Jobs\ResizeImage;
+use App\Jobs\GoogleVisionSafeSearchImage;
+use App\Jobs\GoogleVisionLabelImage;
 
 use Storage;
 use File;
@@ -71,9 +73,9 @@ class HomeController extends Controller
         foreach ($images as $image) {
             $i = new AnnouncementImage();
 
-            $fileName = basename($image); // not aa.jpg, not uniqueSecret, random generated name of the browser
-            $newfileName = "public/announcements/{$new_announcement->id}/{$fileName}";  // from temp to public 
-            Storage::move($image, $newfileName);
+            $fileName = basename($image); 
+            $newfileName = "public/announcements/{$new_announcement->id}/{$fileName}";  
+            Storage::move($image, $newfileName); // from temp to public 
             
             $file =  "storage/announcements/{$new_announcement->id}/{$fileName}";
             $data = getimagesize($file);
@@ -91,6 +93,10 @@ class HomeController extends Controller
             $i->announcement_id = $new_announcement->id; 
 
             $i->save();
+
+            dispatch(new GoogleVisionSafeSearchImage($i->id));
+            dispatch(new GoogleVisionLabelImage($i->id));
+
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));

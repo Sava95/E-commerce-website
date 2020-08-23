@@ -8,6 +8,8 @@ use App\Announcement;
 
 class AnnouncementImage extends Model
 {
+   protected $casts = ['labels' => 'array'];  // look at labels field as an array so that it can hold many values
+
    public function announcement()
    {
        return $this->belongsTo(Announcement::class);

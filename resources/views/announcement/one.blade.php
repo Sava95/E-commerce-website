@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <?php $cat = $category->name;?>
+            <?php $cat =  $announcement->category->name;?>
 
             <div class="card-footer d-flex justify-content-between">
                 <strong>{{ __('ui.category') }}: <a href="{{route('public.announcements.category',

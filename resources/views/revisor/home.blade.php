@@ -58,27 +58,51 @@
                             </div>
                         </div>
 
-                        <div class="d-flex">
-                            @foreach ($announcement->images as $image)
-                                <?php 
+                        <div class="containter">
+                            <div class='row'>
+                                @foreach ($announcement->images as $image)
+                                    <?php 
+                                        $str = ltrim($image->file, 'public/'); //deletes public/ from the string
+                                        $file = "storage/{$str}";
+                                        $img = getimagesize($file);
+                                        $width = $img[0];
+                                        $height = $img[1]; ?>
 
-                                    $str = ltrim($image->file, 'public/'); //deletes public/ from the string
-                                    $file = "storage/{$str}";
-                                    $img = getimagesize($file);
-                                    $width = $img[0];
-                                    $height = $img[1]; ?>
+                                    @if ($width > $height)
+                                        <div class="col-md-4 my-2">
+                                            <img src="{{ $image->getUrl(300, 200) }}" class="rounded" alt="">
+                                            <p class="p_labels" style='margin-top:10px'><strong> Adult: </strong>{{$image->adult}}</p>
+                                            <p class="p_labels">  <strong>Spoof: </strong>{{$image->spoof}} </p>
+                                            <p class="p_labels">  <strong>Medical: </strong>{{$image->medical}} </p>
+                                            <p class="p_labels">  <strong>Violence: </strong>{{$image->violence}} </p>
+                                            <p class="p_labels">  <strong>Racy: </strong>{{$image->racy}} </p>
+                                            <p class="p_labels">  <strong> Labels:  </strong>
+                                                @if ($image->labels) 
+                                                    @foreach ($image->labels as $label)
+                                                        {{$label}}, 
+                                                    @endforeach
+                                                @endif </p>
+                                        </div> 
+                                    @else 
+                                    <div class="col-md-4 my-2">
+                                            <img src="{{ $image->getUrl(300, 200) }}" class="rounded" alt="">
+                                            <p class="p_labels" style='margin-top:10px'><strong> Adult: </strong>{{$image->adult}}</p>
+                                            <p class="p_labels">  <strong>Spoof: </strong>{{$image->spoof}} </p>
+                                            <p class="p_labels">  <strong>Medical: </strong>{{$image->medical}} </p>
+                                            <p class="p_labels">  <strong>Violence: </strong>{{$image->violence}} </p>
+                                            <p class="p_labels">  <strong>Racy: </strong>{{$image->racy}} </p>
+                                            <p class="p_labels">  <strong> Labels:  </strong>
+                                                @if ($image->labels) 
+                                                    @foreach ($image->labels as $label)
+                                                        {{$label}}, 
+                                                    @endforeach
+                                                @endif </p>
+                                        </div> 
+                                    @endif
 
-                                @if ($width > $height)
-                                    <div class="col-md-4">
-                                        <img src="{{ $image->getUrl(300, 200) }}" class="rounded" alt="">
-                                    </div>   
-                                @else 
-                                    <div class="col-md-4">
-                                        <img src="{{ $image->getUrl(200, 300) }}" class="rounded" alt="">
-                                    </div>
-                                    
-                                @endif
-                            @endforeach
+
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="row justify-content-center mt-5 mr-5 ml-5">
