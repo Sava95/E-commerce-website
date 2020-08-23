@@ -11,6 +11,7 @@ use App\AnnouncementImage;
 use App\Jobs\ResizeImage;
 use App\Jobs\GoogleVisionSafeSearchImage;
 use App\Jobs\GoogleVisionLabelImage;
+use App\Jobs\GoogleVisionRemoveFaces;
 
 use Storage;
 use File;
@@ -81,22 +82,41 @@ class HomeController extends Controller
             $data = getimagesize($file);
             $width = $data[0];
             $height = $data[1];
-         
+
+            /*
             if ($width > $height) {
                 dispatch(new ResizeImage($newfileName, 300, 200)); // The dispatch function pushes the job onto the Laravel job queue
             }
             else {
                 dispatch(new ResizeImage($newfileName, 200, 300)); // The dispatch function pushes the job onto the Laravel job queue
             }
+            */
 
             $i->file = $newfileName;
             $i->announcement_id = $new_announcement->id; 
 
             $i->save();
 
+            /*
             dispatch(new GoogleVisionSafeSearchImage($i->id));
             dispatch(new GoogleVisionLabelImage($i->id));
-
+            dispatch(new GoogleVisionRemoveFaces($i->id));
+            */
+            
+            if ($width > $height) {
+                GoogleVisionSafeSearchImage::withChain([
+                    new GoogleVisionLabelImage($i->id),
+                    new GoogleVisionRemoveFaces($i->id),
+                    new ResizeImage($i->file, 300, 200)
+                ]) -> dispatch($i->id);
+            } else {
+                GoogleVisionSafeSearchImage::withChain([
+                    new GoogleVisionLabelImage($i->id),
+                    new GoogleVisionRemoveFaces($i->id),
+                    new ResizeImage($i->file, 200, 300)
+                ]) -> dispatch($i->id);
+            }
+    
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$uniqueSecret}"));
