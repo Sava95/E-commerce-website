@@ -2,13 +2,31 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\User;
 use App\AnnouncementImage;
 
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
+
+
 class Announcement extends Model
 {
+    use Searchable;
+
+    public function toSearchableArray() 
+    {
+        $array = [
+            'id' => $this->id,
+            'title' => $this->title,
+            'body' => $this->body, 
+            'other' => 'announcements announcement'
+        ];
+
+        return $array;
+    }
+
     public function category()
     {   
         return $this->belongsTo(Category::class);

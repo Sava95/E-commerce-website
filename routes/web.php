@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PublicController@index');
 Route::get('/welcome','PublicController@welcome')->name('welcome');  // welcome page
+Route::get('/search', 'PublicController@search')->name('search'); // seach for list of announcements page
 
 // Home Controller
 Route::get('/home', 'HomeController@index')->name('home');

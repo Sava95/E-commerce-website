@@ -43,5 +43,7 @@ return [
     "forget_pass" => "¿Olvidaste tu contraseña?",
     "register" => "Registrarse",
     "name" => "Nombre",
-    "con_pass" => "Confirmar Contraseña"
+    "con_pass" => "Confirmar Contraseña",
+    "search" => ' Buscar',
+    "search_results" => 'Resultados búsqueda: ',
 ];

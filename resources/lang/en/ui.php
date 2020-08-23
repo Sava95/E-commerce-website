@@ -44,4 +44,6 @@ return [
     "register" => "Register",
     "name" => "Name",
     "con_pass" => "Confirm Password",
+    "search" => ' Search',
+    "search_results" => 'Search Results: '
 ];

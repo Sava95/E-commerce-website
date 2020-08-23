@@ -21,7 +21,7 @@
                 @endauth
             </ui>
         </div>
-                
+                        
         <!-- Right Side Of Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">       
             <ul class="navbar-nav ml-auto">

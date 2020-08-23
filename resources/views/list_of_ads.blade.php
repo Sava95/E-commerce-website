@@ -17,6 +17,11 @@
     <div class="d-flex justify-content-center">
         <div class="col-md-8">
             <h1 class='text-white'> {{ __('ui.welcome') }} </h1>
+
+            <form action="{{ route('search') }}" method="GET" class="mb-3 mt-3">
+                <input type="text" name="q" style="width:700px; height: 37.91px" placeholder="{{ __('ui.search') }}">
+                <button class="btn btn-info" type="submit">{{ __('ui.search') }}</button>
+            </form>
         </div>
     </div>
 
