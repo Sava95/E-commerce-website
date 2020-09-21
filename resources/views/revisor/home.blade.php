@@ -85,7 +85,7 @@
                                         </div> 
                                     @else 
                                     <div class="col-md-4 my-2">
-                                            <img src="{{ $image->getUrl(300, 200) }}" class="rounded" alt="">
+                                            <img src="{{ $image->getUrl(200, 300) }}" class="rounded" alt="">
                                             <p class="p_labels" style='margin-top:10px'><strong> Adult: </strong>{{$image->adult}}</p>
                                             <p class="p_labels">  <strong>Spoof: </strong>{{$image->spoof}} </p>
                                             <p class="p_labels">  <strong>Medical: </strong>{{$image->medical}} </p>

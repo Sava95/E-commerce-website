@@ -41,7 +41,7 @@
         <p>
           <i class="fas fa-home mr-3"></i> Las Palmas, LP 35001, ES</p>
         <p>
-          <i class="fas fa-envelope mr-3"></i> badabum_support@badabum.es</p>
+          <i class="fas fa-envelope mr-3"></i> badabum@badabum.es</p>
         <p>
           <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
       </div>
@@ -60,7 +60,7 @@
         <!--Copyright-->
         <p class="text-center text-md-left">© 2020 Copyright:
           <a href="{{url('/')}}">
-            <strong> Badabum </strong>
+            <strong style='color:white'> Badabum </strong>
           </a>
         </p>
 

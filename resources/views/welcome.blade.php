@@ -124,11 +124,23 @@
             @foreach ($carousel_2 as $announcement)
                 <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card h-100">
+
+                  <?php 
+                  $str = ltrim($announcement->images->first()->file, 'public/'); //deletes public/ from the string
+                  $file = "storage/{$str}";
+                  $img = getimagesize($file);
+                  $width = $img[0];
+                  $height = $img[1]; ?>
+                  
                   
                     @if (is_null($announcement->images->first()))
-                      <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                        <img src="http://placehold.it/300x300" alt="">
+                    @elseif ($width > $height)
+                        <img src="{{ $announcement->images->first()->getUrl(300, 200) }}" class="rounded" alt="">
                     @else 
-                      <img class="card-img-top" src=" {{ $announcement->images->first()->getUrl(300, 200)}} " class="rounded" alt=""> 
+                      <div class="d-flex h-50 justify-content-center">
+                        <img src="{{ $announcement->images->first()->getUrl(200, 300) }}" class="rounded" alt="">
+                      </div>
                     @endif       
 
                     <div class="card-body">
